@@ -8,10 +8,10 @@ import { Table } from 'antd'
 const VirtualTable = (props: any) => {
   const { columns, scroll } = props
   const [tableWidth, setTableWidth] = useState(0)
-
   // @ts-ignore
   const widthColumnCount = columns.filter(({ width }) => !width).length
-  const mergedColumns = columns.map((column: { width: any }) => {
+  // @ts-ignore
+  const mergedColumns = columns.map(column => {
     if (column.width) {
       return column
     }
@@ -67,6 +67,7 @@ const VirtualTable = (props: any) => {
             : width
         }}
         height={scroll.y}
+        rowCount={rawData.length}
         rowHeight={() => 54}
         width={tableWidth}
         onScroll={({ scrollLeft }) => {
